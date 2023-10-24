@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 import { createClient } from "supabase";
-import { OrderStatus, PaymentIntentPayload, WebhookData } from "./types.ts";
+import { OrderStatus, PaymentIntentPayload, WebhookData } from "../types.ts";
 import {
   getCurrentTimeInSupabaseFormat,
   getDateInSupabaseFormat,
@@ -61,7 +61,8 @@ Deno.serve(async (request) => {
       }
     }
   } catch (err) {
-    return new Response(err.message, { status: 400 });
+    console.log(err);
+    return new Response(err.message, { status: 500 });
   }
 
   return new Response(JSON.stringify({ ok: true }), { status: 200 });
@@ -148,6 +149,7 @@ async function handlePaymentIntentSuccess(order, PaymentIntentPayload) {
     .insert({
       order_id: order.id,
       user_id: order.user_id,
+      course_id: order.course_id,
       start_date: getCurrentTimeInSupabaseFormat(),
       end_date: getDateInSupabaseFormat(getEndDate()),
     })
@@ -222,3 +224,5 @@ function getEndDate() {
   date.setFullYear(date.getFullYear() + 1);
   return date;
 }
+
+// supabase functions deploy stripe-hooks  --import-map import_map.json --no-verify-jwt

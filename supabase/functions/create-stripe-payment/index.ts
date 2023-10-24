@@ -1,3 +1,4 @@
+import { OrderStatus } from "../types.ts";
 import { Stripe } from "stripe";
 import { createClient } from "supabase";
 import { getCurrentTimeInSupabaseFormat } from "../utils.ts";
@@ -51,7 +52,7 @@ Deno.serve(async (req) => {
     );
   }
 
-  let { data: courses } = await supabase
+  const { data: courses } = await supabase
     .from("courses")
     .select("*")
     .eq("id", course_id);
@@ -85,6 +86,7 @@ Deno.serve(async (req) => {
         course_id: course_id,
         amount: amount,
         currency: amountCurrency,
+        status: OrderStatus.CREATED,
       },
     ])
     .select();
@@ -93,10 +95,16 @@ Deno.serve(async (req) => {
     throw Error("Error While Creating Order");
   }
 
-  return new Response(JSON.stringify(orders[0]), {
+  return Response.json({
+    order: orders[0],
+    clientSecret: paymentIntent.client_secret,
+  }, {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "apikey, X-Client-Info, Authorization",
+      "Content-Type": "application/json",
     },
   });
 });
+
+// supabase functions deploy create-stripe-payment  --import-map import_map.json
