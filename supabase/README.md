@@ -68,13 +68,17 @@ will be required in further steps.
 supabase link  --project-ref <provide-your-project-ref-id-here>
 ```
 
+It will prompt you to provide database password. You can provide the password
+from previous step or if you skip this time then you will need to provide it at
+time of applying database migrations.
+
 ## Database Migration
 
 Apply supabase migrations using the below command. You will be required to
 supply for database password which you created in step 3 of supabase setup.
 
 ```shell
-supabase db pull --debug --linked
+supabase db push --debug --linked
 ```
 
 ## Edge Functions
