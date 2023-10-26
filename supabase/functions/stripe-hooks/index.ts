@@ -123,7 +123,7 @@ async function handleDispute(order, dispute: any, eventType: string) {
       console.log("Processing Dispute Created Event");
       await handleDisputeCreated(order, dispute);
       break;
-    case "charged.dispute.closed":
+    case "charge.dispute.closed":
       console.log("Processing Dispute Closed Event");
       await handleDisputeClosed(order, dispute);
       break;

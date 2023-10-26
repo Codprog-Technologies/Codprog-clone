@@ -41,9 +41,11 @@ Deno.serve(async (req) => {
     .select("id")
     .eq("user_id", user.id)
     .eq("course_id", course_id)
-    .gte("end_date", getCurrentTimeInSupabaseFormat());
+    .gte("end_date", getCurrentTimeInSupabaseFormat())
+    .or("revoked.is.null, revoked.is.FALSE");
 
   if (subscription && subscription.length > 0) {
+    console.log("Subscription Already Exists for User : ", user.id);
     return new Response(
       JSON.stringify({ error: "Subscription Already Exists" }),
       {
