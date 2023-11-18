@@ -302,6 +302,12 @@ GRANT ALL ON FUNCTION "public"."handle_new_user"() TO "anon";
 GRANT ALL ON FUNCTION "public"."handle_new_user"() TO "authenticated";
 GRANT ALL ON FUNCTION "public"."handle_new_user"() TO "service_role";
 
+-- trigger the function every time a user is created
+-- https://github.com/supabase/cli/issues/120
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
+
 GRANT ALL ON FUNCTION "public"."logflare_fdw_handler"() TO "postgres";
 GRANT ALL ON FUNCTION "public"."logflare_fdw_handler"() TO "anon";
 GRANT ALL ON FUNCTION "public"."logflare_fdw_handler"() TO "authenticated";
