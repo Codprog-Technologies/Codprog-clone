@@ -104,7 +104,7 @@ We need to deploy both of the functions to project.
 
 2. Deploy the Edge Functions:
    ```shell
-   supabase functions deploy create-stripe-payment  --import-map import_map.json
-   supabase functions deploy stripe-hooks  --import-map import_map.json --no-verify-jwt
+   supabase functions deploy create-stripe-payment
+   supabase functions deploy stripe-hooks --no-verify-jwt
    ```
    Do note that we don't want to verify the token for stripe-hooks function.

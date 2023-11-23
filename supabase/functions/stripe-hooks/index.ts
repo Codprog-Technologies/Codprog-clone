@@ -225,4 +225,4 @@ function getEndDate() {
   return date;
 }
 
-// supabase functions deploy stripe-hooks  --import-map import_map.json --no-verify-jwt
+// supabase functions deploy stripe-hooks --no-verify-jwt

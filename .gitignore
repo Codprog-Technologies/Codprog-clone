@@ -1,5 +1,4 @@
 .env
- # need to confirm if vs code settings should be ignored because it affects development..
 .vscode
 
 

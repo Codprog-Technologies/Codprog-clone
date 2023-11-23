@@ -109,4 +109,4 @@ Deno.serve(async (req) => {
   });
 });
 
-// supabase functions deploy create-stripe-payment  --import-map import_map.json
+// supabase functions deploy create-stripe-payment
