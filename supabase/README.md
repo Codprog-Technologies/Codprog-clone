@@ -85,6 +85,27 @@ supabase db push --debug --linked
 
 ## Edge Functions
 
+Edge functions are helpful if we want to integrate with third party applications
+like Stripe. Before starting to deploy our edge functions we need to obtain the
+secrets from stripe for setting up order creation as well as webhook handling
+flow.
+
+1. **STRIPE_API_KEY:** Secret Key (Obtained from
+   [Stripe Dashboard](https://dashboard.stripe.com/test/apikeys) for the test
+   environment). Do note that we don't need Publishable Key here.
+
+2. **STRIPE_WEBHOOK_SIGNING_SECRET:** Visit Stripe Dashboard in Test Mode and
+   add the webhook that will be required for handing updates from stripe.
+   Example:
+   [https://&lt;project-ref-id&gt;.supabase.co/functions/v1/stripe-hooks](https://<project-ref-id>.supabase.co/functions/v1/stripe-hooks)
+   . You need to add the below events for the webhook:
+   - `charge.dispute.closed`
+   - `charge.dispute.created`
+   - `payment_intent.succeeded`
+   - `payment_intent.payment_failed`
+   - `payment_intent.canceled`
+   - `payment_intent.processing`
+
 Functions Directory contains two functions:
 
 1. create-stripe-payment : Needed to create a order in our system as well as
