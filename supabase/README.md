@@ -39,8 +39,9 @@ supabase project.
 
 ## Supabase Setup
 
-1. **Clone this repository** to your local machine and navigate to supabase
-   directory:
+1. **Clone this repository**
+
+   Clone to your local machine and navigate to supabase directory:
 
    ```shell
    git clone <repository-url>
@@ -49,28 +50,29 @@ supabase project.
 
 2. Install Supabase CLI
 
-Please refer to
-https://supabase.com/docs/guides/cli/getting-started?platform=npm#installing-the-supabase-cli
-for more details. You can basically install it via NPM.
+   Please refer to
+   https://supabase.com/docs/guides/cli/getting-started?platform=npm#installing-the-supabase-cli
+   for more details. You can basically install it via NPM.
 
 3. Create a Supabase Project
 
-Go to supabase.com and setup your account if not already done. Start a new
-supabase Project. Do note the password provided while creating the database as
-will be required in further steps.
+   Go to supabase.com and setup your account if not already done. Start a new
+   supabase Project. Do note the password provided while creating the database
+   as will be required in further steps.
 
-4. Supabase Link You will get your project reference Id easily from the supabase
-   dashboard URL of project. Ex:
-   https://supabase.com/dashboard/project/abcdefghijklmnop In this example
-   project reference Id is abcdefghijklmnop
+4. Link Supabase Project
 
-```shell
-supabase link  --project-ref <provide-your-project-ref-id-here>
-```
+   You will get your project reference Id easily from the supabase dashboard URL
+   of project. Ex: https://supabase.com/dashboard/project/abcdefghijklmnop In
+   this example project reference Id is abcdefghijklmnop
 
-It will prompt you to provide database password. You can provide the password
-from previous step or if you skip this time then you will need to provide it at
-time of applying database migrations.
+   ```shell
+   supabase link  --project-ref <provide-your-project-ref-id-here>
+   ```
+
+   It will prompt you to provide database password. You can provide the password
+   from previous step or if you skip this time then you will need to provide it
+   at time of applying database migrations.
 
 ## Database Migration
 
