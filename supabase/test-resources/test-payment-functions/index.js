@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 const createPaymentIntent = async () => {
   try {
     const response = await fetch(
-      "https://glkmflbkcxcpcdkzvlbw.supabase.co/functions/v1/create-stripe-payment",
+      "https://<project-ref-id>.supabase.co/functions/v1/create-stripe-payment",
       {
         method: "POST",
         headers: {
