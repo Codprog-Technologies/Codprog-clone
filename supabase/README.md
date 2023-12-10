@@ -60,7 +60,21 @@ supabase project.
    supabase Project. Do note the password provided while creating the database
    as will be required in further steps.
 
-4. Link Supabase Project
+4. Perform login for supabase CLI
+
+   This is a required only once for a development machine. This is required to
+   authenticate the requests from Supabase CLI to Supabase Server. After running
+   the below command, it will ask you to provide access token which can be
+   obtained from
+   [Supabase Access Token Dashboard](https://supabase.com/dashboard/account/tokens).
+   Once token is created, provide it to cli so that it can be used by cli in
+   subsequent commands.
+
+   ```shell
+   supabase login
+   ```
+
+5. Link Supabase Project
 
    You will get your project reference Id easily from the supabase dashboard URL
    of project. Ex: https://supabase.com/dashboard/project/abcdefghijklmnop In
