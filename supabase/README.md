@@ -54,13 +54,22 @@ supabase project.
    https://supabase.com/docs/guides/cli/getting-started?platform=npm#installing-the-supabase-cli
    for more details. You can basically install it via NPM.
 
-3. Create a Supabase Project
+3. Install Docker Desktop
+
+   Starting Supabase CLI version 1.123.4, you must have Docker Desktop installed
+   to deploy Edge Functions. We need to deploy 2 edge functions. (See below). Go
+   to [Get Docker Desktop](https://docs.docker.com/get-docker/) to download and
+   install Docker desktop according to your operating system. If you don't want
+   to install Docker Desktop, you can use an older version for supabase CLI in
+   previous step.
+
+4. Create a Supabase Project
 
    Go to supabase.com and setup your account if not already done. Start a new
    supabase Project. Do note the password provided while creating the database
    as will be required in further steps.
 
-4. Perform login for supabase CLI
+5. Perform login for supabase CLI
 
    This is a required only once for a development machine. This is required to
    authenticate the requests from Supabase CLI to Supabase Server. After running
@@ -74,7 +83,7 @@ supabase project.
    supabase login
    ```
 
-5. Link Supabase Project
+6. Link Supabase Project
 
    You will get your project reference Id easily from the supabase dashboard URL
    of project. Ex: https://supabase.com/dashboard/project/abcdefghijklmnop In
