@@ -6,7 +6,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import axios from "axios";
-import { LOGIN_URL, SUPBASE_API_KEY } from "../constants";
+import { LOGIN_URL, SUPABASE_API_KEY } from "../constants";
 import { getUser } from "../utils/getUser";
 // get
 // post, put, patch, delete,
@@ -32,7 +32,7 @@ export async function loginAction({ request }) {
   try {
     const response = await axios.post(LOGIN_URL, JSON.stringify(credentials), {
       headers: {
-        apikey: SUPBASE_API_KEY,
+        apikey: SUPABASE_API_KEY,
         "Content-Type": "application/json",
       },
     });
