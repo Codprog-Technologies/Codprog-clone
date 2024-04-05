@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // Load the publishable key from the server. The publishable key
   // is set in your .env file.
-  const publishableKey = "<stripe-publishable-key>";
+  const publishableKey =
+    "pk_test_51NA7b5SEmnOPh2TgPHyzbCZM0LAJr0DHG9eFlfDUXLQ1l544fwOXRi1inCzKZ7rpX7pqzZcf2iSEHpHXjlLFC6jJ00HQQmrA3x";
 
   const stripe = Stripe(publishableKey, {
     apiVersion: "2020-08-27",
@@ -72,23 +73,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 const createPaymentIntent = async () => {
   try {
     const response = await fetch(
-      "https://<project-ref-id>.supabase.co/functions/v1/create-stripe-payment",
+      "https://orfqhbdeqtusogzodofb.supabase.co/functions/v1/create-stripe-payment",
       {
         method: "POST",
         headers: {
-          "Authorization": "Bearer <user-access-token>",
-          "apiKey": "<anon-key>",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Im4rRis0cGdZaXIwN2xoNFgiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzEwOTIwNDg3LCJpYXQiOjE3MTA5MTY4ODcsImlzcyI6Imh0dHBzOi8vb3JmcWhiZGVxdHVzb2d6b2RvZmIuc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjM3MWU2Njc5LTFiNzAtNDM0YS05Zjc2LTNkYjk2ZWQ4NjJlOSIsImVtYWlsIjoiZHVtbXlAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3MTA5MTY4ODd9XSwic2Vzc2lvbl9pZCI6ImQ2Y2U5YWU1LTVhYmEtNGE5NS1iZjkzLTIwNmUyYWQ1NGU5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.E296rFpngz4FiBmneLsBNujTfUfHeXiZMoHyGmXSkB4",
+          apiKey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yZnFoYmRlcXR1c29nem9kb2ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIyMDM5MzQsImV4cCI6MjAxNzc3OTkzNH0.lPpNrQwmEyVK2hcmH24-w0m78yRQjvqMlj2tK73tThw",
         },
         // Send any necessary data to your server to create the Payment Intent
         body: JSON.stringify({
-          course_id: 4,
+          course_id: 2,
         }),
-      },
+      }
     );
     const data = await response.json();
     return data.clientSecret;
   } catch (error) {
-    addMessage("Error creating Payment Intent:" + error);
     return null;
   }
 };

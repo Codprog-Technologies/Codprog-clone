@@ -1,0 +1,14 @@
+{
+  "name": "supabase",
+  "version": "1.0.0",
+  "description": "In this Readme, we will guide you to setup your own supabase project using the code provided in this repository. Codprog is a Learning Management System (LMS). We will be using supabase to mimic the functionality of our LMS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "supabase": "^1.106.1"
+  }
+}

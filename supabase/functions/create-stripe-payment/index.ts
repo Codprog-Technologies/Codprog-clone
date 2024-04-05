@@ -12,17 +12,15 @@ const stripe = new Stripe(stripeAPIKey, {
   httpClient: Stripe.createFetchHttpClient(),
 });
 
-const supabase = createClient(
-  supabaseUrl,
-  supabaseKey,
-);
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, {
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "apikey, X-Client-Info, Authorization",
+        "Access-Control-Allow-Headers":
+          "apikey, X-Client-Info, Authorization, content-type",
       },
     });
   }
@@ -50,7 +48,12 @@ Deno.serve(async (req) => {
       JSON.stringify({ error: "Subscription Already Exists" }),
       {
         status: 400,
-      },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers":
+            "apikey, X-Client-Info, Authorization, content-type",
+        },
+      }
     );
   }
 
@@ -64,7 +67,12 @@ Deno.serve(async (req) => {
       JSON.stringify({ error: "Course Does not Exists or Is not available" }),
       {
         status: 400,
-      },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers":
+            "apikey, X-Client-Info, Authorization, content-type",
+        },
+      }
     );
   }
   const course = courses[0];
@@ -97,16 +105,19 @@ Deno.serve(async (req) => {
     throw Error("Error While Creating Order");
   }
 
-  return Response.json({
-    order: orders[0],
-    clientSecret: paymentIntent.client_secret,
-  }, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "apikey, X-Client-Info, Authorization",
-      "Content-Type": "application/json",
+  return Response.json(
+    {
+      order: orders[0],
+      clientSecret: paymentIntent.client_secret,
     },
-  });
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "apikey, X-Client-Info, Authorization",
+        "Content-Type": "application/json",
+      },
+    }
+  );
 });
 
 // supabase functions deploy create-stripe-payment
