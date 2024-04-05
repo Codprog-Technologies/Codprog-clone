@@ -2,19 +2,27 @@ import axios from "axios";
 import { redirect } from "react-router-dom";
 import { LOGOUT_URL, SUPABASE_API_KEY } from "../constants";
 import { getUser } from "../utils/getUser";
+import isTokenExpired from "../utils/isTokenExpired";
+import refreshToken from "../utils/refreshToken";
 export async function logoutAction() {
-  // logout
-  // logout api
-  const user = await getUser();
-  await axios.post(LOGOUT_URL, null, {
-    headers: {
-      apikey: SUPABASE_API_KEY,
-      Authorization: `Bearer ${user.access_token}`,
-      "Content-Type": "application/json",
-    },
-  });
-  localStorage.removeItem("user");
-  // clear user from local storage
+  let { access_token, expires_at } = await getUser();
+  if (isTokenExpired(expires_at)) {
+    console.log("token expired :(");
+    access_token = await refreshToken();
+  }
+  try {
+    await axios.post(LOGOUT_URL, null, {
+      headers: {
+        apikey: SUPABASE_API_KEY,
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.error(error.message);
+  } finally {
+    localStorage.removeItem("user");
 
-  return redirect("/");
+    return redirect("/");
+  }
 }

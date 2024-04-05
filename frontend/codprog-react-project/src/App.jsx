@@ -12,11 +12,15 @@ import { profileLoader } from "./pages/Profile";
 import { signupAction, signupLoader } from "./pages/Signup";
 import { logoutAction } from "./pages/Logout";
 import { getUser } from "./utils/getUser";
+import { homeLoader } from "./pages/Home";
+import CourseDetail, { courseDetailLoader } from "./pages/CourseDetail";
+import Payment, { paymentLoader } from "./pages/Payment";
+import Thankyou from "./pages/Thankyou";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />} loader={getUser} id="parentRoute">
-      <Route index element={<Home />} />
+      <Route index element={<Home />} loader={homeLoader} />
       <Route path="about" element={<About />} />
       <Route path="profile" element={<Profile />} loader={profileLoader} />
 
@@ -38,6 +42,17 @@ const router = createBrowserRouter(
         element={<MyCourses />}
         loader={myCourseLoader}
       />
+      <Route
+        path="/course-detail/:id"
+        element={<CourseDetail />}
+        loader={courseDetailLoader}
+      />
+      <Route
+        path="/payment/:courseID"
+        element={<Payment />}
+        loader={paymentLoader}
+      />
+      <Route path="thankyou" element={<Thankyou />} />
     </Route>
   )
 );
