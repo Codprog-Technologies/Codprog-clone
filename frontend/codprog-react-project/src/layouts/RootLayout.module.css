@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  /* border: 2px solid red; */
+}
+.navItems {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+}
+.nav a {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.navItems a:hover {
+  text-decoration: underline;
+}
+.cod {
+  color: #c190ff;
+  font-size: 2rem;
+}
+.prog {
+  color: #ceff90;
+  font-size: 2rem;
+}
+.logo {
+  font-size: 2rem;
+}
+
+.logoutButton {
+  padding: 0.3rem 0.5rem;
+  font-size: 1.01rem;
+  font-weight: 500;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.logoutSvg {
+  width: 1em;
+}

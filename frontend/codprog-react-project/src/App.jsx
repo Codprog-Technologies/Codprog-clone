@@ -16,6 +16,7 @@ import { homeLoader } from "./pages/Home";
 import CourseDetail, { courseDetailLoader } from "./pages/CourseDetail";
 import Payment, { paymentLoader } from "./pages/Payment";
 import Thankyou from "./pages/Thankyou";
+import MyCourseVideos, { myCourseVideosLoader } from "./pages/MyCourseVideos";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +52,11 @@ const router = createBrowserRouter(
         path="/payment/:courseID"
         element={<Payment />}
         loader={paymentLoader}
+      />
+      <Route
+        path="/my-courses/:courseID"
+        element={<MyCourseVideos />}
+        loader={myCourseVideosLoader}
       />
       <Route path="thankyou" element={<Thankyou />} />
     </Route>

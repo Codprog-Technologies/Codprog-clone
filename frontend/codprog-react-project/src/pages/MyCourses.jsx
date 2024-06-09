@@ -4,7 +4,9 @@ import refreshToken from "../utils/refreshToken";
 import { getUser } from "../utils/getUser";
 import { BASE_URL, SUPABASE_API_KEY } from "../constants";
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import thumbnail from "../assets/thumbnail.svg";
+import styles from "./MyCourses.module.css";
+import { Link, useLoaderData } from "react-router-dom";
 export async function myCourseLoader({ request }) {
   const pathname = new URL(request.url).pathname;
   await requireAuth({ redirectTo: pathname });
@@ -35,11 +37,35 @@ export async function myCourseLoader({ request }) {
 }
 function MyCourses() {
   const myCourses = useLoaderData();
+
   return (
-    <div>
-      {myCourses.map((course) => {
-        return <div key={course.id}> Name : {course.name}</div>;
-      })}
+    <div className={`${styles.myCoursesPage}`}>
+      <h1>My courses</h1>
+
+      <div className={styles.myCourses}>
+        {myCourses.map((course) => {
+          const { name, id } = course;
+
+          return (
+            <div key={id} className={styles.courseCard}>
+              <img
+                src={thumbnail}
+                alt="Course generic thumbnail"
+                className={styles.thumbnail}
+              />
+              <h2>{name}</h2>
+
+              <Link
+                key={course.id}
+                to={`${course.id}`}
+                className={styles.watchNowBtn}
+              >
+                Watch Now
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

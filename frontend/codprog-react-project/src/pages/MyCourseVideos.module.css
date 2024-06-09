@@ -1,0 +1,49 @@
+.myCourseSection {
+  display: flex;
+  /* border: 2px solid red; */
+  height: calc(100vh - 64px);
+  box-shadow: 0px 2px 15px #c190ff, 0px -2px 2px #888;
+}
+.playlist {
+  /* border: 2px solid white; */
+  width: 300px;
+  height: 100%;
+  overflow: scroll;
+  padding: 1rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  background-color: #3a304a;
+  gap: 1rem;
+}
+
+.playlist li {
+  list-style-type: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.playlist li:hover {
+  text-decoration: underline;
+}
+.videoContainer {
+  width: calc(100% - 300px);
+  display: flex;
+}
+
+@media (max-width: 1200px) {
+  .myCourseSection {
+    flex-direction: column;
+  }
+  .videoContainer {
+    width: 100%;
+    order: 0;
+    height: auto;
+    min-height: 70%;
+    border: 2px solid red;
+  }
+  .playlist {
+    width: 100%;
+    order: 1;
+    /* height: auto; */
+  }
+}

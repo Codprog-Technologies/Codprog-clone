@@ -1,0 +1,46 @@
+.myCourses {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.thumbnail {
+  width: 60%;
+  margin: auto;
+  display: block;
+  /* border: 2px solid red; */
+}
+.courseCard {
+  background-color: #3a304a;
+  padding: 1rem;
+  text-align: center;
+}
+.myCoursesPage {
+  max-width: 1400px;
+  width: 90%;
+  margin: 4rem auto;
+}
+.watchNowBtn {
+  background-color: #8e34ff;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  display: block;
+  border-radius: 5px;
+  margin: 1rem auto;
+  width: fit-content;
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .myCourses {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .myCourses {
+    grid-template-columns: 1fr;
+  }
+}

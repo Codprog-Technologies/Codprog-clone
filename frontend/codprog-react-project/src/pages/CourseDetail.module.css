@@ -1,0 +1,64 @@
+.module {
+  /* border: 2px solid red; */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+  border-left: 6px solid #efefef;
+}
+.btn {
+  background-color: #8e34ff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.header {
+  /* border: 2px solid red; */
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 100px;
+  margin-top: 2rem;
+  align-items: center;
+}
+.headerImg {
+  width: 300px;
+
+  /* border: 2px solid red; */
+}
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 1rem;
+  /* border: 2px solid red; */
+}
+.headerButtonContainer {
+  display: flex;
+  width: 50%;
+  gap: 1rem;
+  /* align-items: stretch; */
+  /* border: 1px solid red; */
+}
+
+#curriculum {
+  border: 2px solid red;
+}
+.curriculumSection {
+  margin-top: 4rem;
+}
+
+.curriculumHeading {
+  font-size: 4rem;
+}
+.chapterNumber {
+  color: #cdcdcd;
+}
+.courseName {
+  font-size: 4rem;
+  color: #efefef;
+}

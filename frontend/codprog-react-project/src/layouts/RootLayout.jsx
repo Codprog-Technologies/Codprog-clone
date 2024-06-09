@@ -1,23 +1,27 @@
 import { NavLink, Outlet, Form, useRouteLoaderData } from "react-router-dom";
-
+import styles from "./RootLayout.module.css";
+import logoutSvg from "../assets/logout.svg";
 function RootLayout() {
   const user = useRouteLoaderData("parentRoute");
   return (
     <>
       <header>
-        <nav>
-          <h1 className="logo">
-            <NavLink to="/">Codprog </NavLink>
+        <nav className={`${styles.nav} container`}>
+          <h1 className={styles.logo}>
+            <NavLink to="/">
+              <span className={styles.cod}>Cod</span>
+              <span className={styles.prog}>Prog</span>{" "}
+            </NavLink>
           </h1>
-          <ul>
+          <ul className={styles.navItems}>
             <li>
               <NavLink to="about"> About</NavLink>
             </li>
-            {user && (
+            {/* {user && (
               <li>
                 <NavLink to="profile"> Profile</NavLink>
               </li>
-            )}
+            )} */}
 
             {user && (
               <li>
@@ -38,7 +42,14 @@ function RootLayout() {
           </ul>
           {user && (
             <Form action="/logout" method="post">
-              <button>Logout</button>
+              <button className={styles.logoutButton}>
+                Logout{" "}
+                <img
+                  src={logoutSvg}
+                  alt="Logout SVG"
+                  className={styles.logoutSvg}
+                />
+              </button>
             </Form>
           )}
         </nav>
