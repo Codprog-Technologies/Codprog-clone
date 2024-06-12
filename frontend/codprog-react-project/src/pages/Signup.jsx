@@ -2,6 +2,7 @@ import { SIGNUP_URL, SUPABASE_API_KEY } from "../constants";
 import axios from "axios";
 import { Form, useActionData, redirect } from "react-router-dom";
 import { getUser } from "../utils/getUser";
+import styles from "./LoginAndSignup.module.css";
 export async function signupLoader() {
   const user = await getUser();
   if (user === null) {
@@ -44,39 +45,34 @@ export async function signupAction({ request }) {
 function Signup() {
   const data = useActionData();
   return (
-    <Form action="/signup" method="POST">
-      <h2>signup page</h2>
-      <div>
-        <input
-          type="email"
-          name="email"
-          autoComplete="off"
-          id="email"
-          placeholder="email"
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="password"
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          name="confirm-password"
-          id="confirm-password"
-          placeholder="confirm-password"
-        />
-      </div>
-      <div>
-        <input type="submit" value="Signup" />
-        {data?.error && <p>{data.error}</p>}
-        {data?.message && <p>{data.message}</p>}
-      </div>
-    </Form>
+    <div className="container">
+      <h2 className={styles.pageHeading}>
+        Create your account and start learning
+      </h2>
+      <Form action="/signup" method="POST" className={styles.form}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input type="email" name="email" autoComplete="off" id="email" />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <div>
+          <label htmlFor="confirm password">Confirm Password</label>
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+          />
+        </div>
+        <div>
+          <input type="submit" value="Signup" />
+          {data?.error && <p>{data.error}</p>}
+          {data?.message && <p>{data.message}</p>}
+        </div>
+      </Form>{" "}
+    </div>
   );
 }
 export default Signup;

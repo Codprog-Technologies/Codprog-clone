@@ -6,6 +6,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import axios from "axios";
+import styles from "./LoginAndSignup.module.css";
 import { LOGIN_URL, SUPABASE_API_KEY } from "../constants";
 import { getUser } from "../utils/getUser";
 // get
@@ -67,35 +68,34 @@ function Login() {
   const loginURL = location.pathname + location.search;
   const isSubmitting = navigation.state === "submitting";
   return (
-    <Form method="POST" action={loginURL} replace>
-      <h2>Login Page</h2>
-      <div>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="email"
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="password"
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <input
-          type="submit"
-          value={isSubmitting ? "submitting..." : "login"}
-          disabled={isSubmitting}
-        />
-      </div>
-      {data && data.error && <p>{data.error}</p>}
-    </Form>
+    <div className={`container ${styles.formContainer}`}>
+      <h2 className={styles.pageHeading}>
+        Welcome Back! Login to continue learning
+      </h2>
+      <Form method="POST" action={loginURL} className={styles.form} replace>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input type="email" name="email" id="email" autoComplete="off" />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            autoComplete="off"
+          />
+        </div>
+        <div>
+          <input
+            type="submit"
+            value={isSubmitting ? "submitting..." : "login"}
+            disabled={isSubmitting}
+          />
+        </div>
+        {data && data.error && <p>{data.error}</p>}
+      </Form>
+    </div>
   );
 }
 export default Login;
