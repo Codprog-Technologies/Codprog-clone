@@ -1,0 +1,584 @@
+{
+	"info": {
+		"_postman_id": "9124f706-d44a-41fa-b42b-d7b681b58049",
+		"name": "Codprog Clone Supabase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12637030"
+	},
+	"item": [
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Get All courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/courses?id=in.%28\"4\",\"5\"%29",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"courses"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "in.%28\"4\",\"5\"%29"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Get All subscriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/subscriptions?id=eq.2&select=*&select=courses(name,id)",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.2"
+								},
+								{
+									"key": "select",
+									"value": "*"
+								},
+								{
+									"key": "select",
+									"value": "courses(name,id)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modules",
+			"item": [
+				{
+					"name": "Get All modules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/modules",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"modules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Modules By Course Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/modules?course_id=eq.5&select=*",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"modules"
+							],
+							"query": [
+								{
+									"key": "course_id",
+									"value": "eq.5"
+								},
+								{
+									"key": "select",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Videos",
+			"item": [
+				{
+					"name": "Get All Videos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/videos",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Videos By Module Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/videos?module_id=&select=*",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "module_id",
+									"value": ""
+								},
+								{
+									"key": "select",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Video by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/videos?id=eq.2",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.2"
+								},
+								{
+									"key": "select",
+									"value": "*",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "Refresh Tokens",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"ofo31SUmDeMAmiuAwUhhVQ\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/auth/v1/token?grant_type=refresh_token",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Aniket\",\n    \"last_name\": \"Singla\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/rest/v1/profiles?id=eq.2fa56113-31ce-4aeb-ab75-347c2ff2b76f",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"profiles"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.2fa56113-31ce-4aeb-ab75-347c2ff2b76f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"codprog242@mailinator.com\",\n  \"password\": \"CTtmCNAWmindEDdRcJKq\"\n}"
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/auth/v1/signup",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"codprog@mailinator.com\",\n    \"password\": \"new210pass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/auth/v1/token?grant_type=password",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "SUPABASE_KEY"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}"
+							}
+						],
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/auth/v1/logout",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Magic Login Email For Password Reset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "SUPABASE_KEY"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"codprog321@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/auth/v1/recover",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"recover"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "SUPABASE_KEY"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"new210pass\"\n}"
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/auth/v1/user",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edge Functions",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{codprog-clone-access-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"course_id\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/functions/v1/create-stripe-payment",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"functions",
+								"v1",
+								"create-stripe-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stripe Webhooks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{codprog-clone-base-url}}/functions/v1/stripe-hooks",
+							"host": [
+								"{{codprog-clone-base-url}}"
+							],
+							"path": [
+								"functions",
+								"v1",
+								"stripe-hooks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{supabase_codprog_api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "apiKey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

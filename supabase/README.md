@@ -154,3 +154,20 @@ We need to deploy both of the functions to project.
    supabase functions deploy stripe-hooks --no-verify-jwt
    ```
    Do note that we don't want to verify the token for stripe-hooks function.
+
+## Postman Collection
+
+We have included a Postman collection and an associated environment file in the `test-resources/postman-collection` folder. These files are named:
+
+- **[Codprog_Clone_Supabase.postman_collection.json](test-resources/postman-collection/Codprog_Clone_Supabase.postman_collection.json)**
+- **[Dev.postman_environment.json](test-resources/postman-collection/Dev.postman_environment.json)**
+
+While we recommend creating your own Postman collection for testing and development, you can use the provided files as a reference. If you choose to import these collections, make sure to update the following environment variables in the **Dev Environment**:
+
+1. **`codprog-clone-base-url`**: Replace with the base URL of your Supabase project in the format:  
+   `https://<project-ref-id>.supabase.co`
+
+2. **`supabase_codprog_api_key`**: Obtain this from the Supabase dashboard:  
+   `Settings -> API -> Project API Keys -> anon / public`
+
+3. **`supabase_codprog_api_key`** (for protected routes): This is the user token generated after logging in or signing up. Use this token for requests requiring authentication.
