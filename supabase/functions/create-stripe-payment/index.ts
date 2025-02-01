@@ -21,6 +21,7 @@ Deno.serve(async (req) => {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers":
           "apikey, X-Client-Info, Authorization, content-type",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       },
     });
   }
@@ -52,6 +53,7 @@ Deno.serve(async (req) => {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers":
             "apikey, X-Client-Info, Authorization, content-type",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         },
       }
     );
@@ -71,6 +73,7 @@ Deno.serve(async (req) => {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers":
             "apikey, X-Client-Info, Authorization, content-type",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         },
       }
     );
@@ -115,6 +118,7 @@ Deno.serve(async (req) => {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "apikey, X-Client-Info, Authorization",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       },
     }
   );
